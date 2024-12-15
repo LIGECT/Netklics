@@ -147,14 +147,12 @@ body {
     width: 100%;
     display: block;
     margin-bottom: 12px;
-
-    img {
-        width: 100%;
-        display: block;
-    }
-
 }
 
+.content-cards__item--img img {
+    width: 100%;
+    display: block;
+}
 
 .content-cards__item--title {
     display: flex;
