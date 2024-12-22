@@ -1,4 +1,6 @@
-const cardWrapper = document.querySelector(".content-cards");
+const cardWrapper = document.querySelector('.content-cards');
+const searchInput = document.getElementById ('search-input')
+const searchButton = document.getElementById ('search-button')
 
 const films = [
     {
@@ -7,6 +9,7 @@ const films = [
         original: 'The Martian 2015',
         category: 'Фантастика, приключения',
         rating: 7.8,
+        link: '/film.html',
         image: './images/film.png' 
     },
     {
@@ -15,6 +18,7 @@ const films = [
         original: 'The Martian 2015',
         category: 'Фантастика, приключения',
         rating: 7.8,
+        link: '/film.html',
         image: './images/film.png' 
     },
     {
@@ -23,19 +27,40 @@ const films = [
         original: 'The Martian 2015',
         category: 'Фантастика, приключения',
         rating: 7.8,
+        link: '/film.html',
         image: './images/film.png' 
     },
 ];
 
-const render = () => {
+const render = (array) => {
+
+    console.log(array);
+    
     cardWrapper.innerHTML = ''
 
-    films.forEach((item) => {
+    array.forEach((item) => {
         cardWrapper.insertAdjacentHTML('beforeend', `
-                <div>test</div>
+        <a href="${item.link}" class="content-cards__item">
+        <div class="content-cards__item--img">
+        <img src="${item.image}" alt="film" />
+         </div>
+
+        <div class="content-cards__item--title">
+        <h5>${item.title},</h5>
+        <span>${item.original}</span>
+        </div>
+        <p class="content-cards__item--desription">
+        ${item.category}
+        </p>
+        <p class="content-cards__item--rating">${item.rating}</p>
+    </a>
             `)
         
     })
 }
 
-render ()
+searchButton.addEventListener('click', () => {
+    render(films.filter((item) =>  item.title.includes(searchInput.value))) 
+})
+
+render (films)
